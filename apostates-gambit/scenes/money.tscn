@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dnpy3slen6scc"]
+
+[ext_resource type="Script" uid="uid://d1ngj34sopf1c" path="res://scripts/money.gd" id="1_dia0j"]
+[ext_resource type="Texture2D" uid="uid://ycjwg2fkautp" path="res://assets/tileset/4 Animated objects/Money.png" id="1_v42d4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dia0j"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xgx0"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q70k"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rdbfl"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_deygv"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iak8e"]
+atlas = ExtResource("1_v42d4")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qwpq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dia0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xgx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q70k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rdbfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_deygv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iak8e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hd7xm"]
+radius = 6.08276
+
+[node name="Money" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_dia0j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qwpq8")
+autoplay = "default"
+frame_progress = 0.707741
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hd7xm")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
